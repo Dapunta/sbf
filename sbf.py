@@ -50,6 +50,7 @@ def password(text):
         if len(i)>=6 : results.append(i);results.append(i+"123");results.append(i+"12345")
         elif len(i)==3 or len(i)==4 or len(i)==5 : results.append(i+"123");results.append(i+"12345")
         else:continue
+    results.append(text.lower())
     return results
 
 def logger(em,pas,hosts):
