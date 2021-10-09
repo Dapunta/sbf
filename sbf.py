@@ -55,10 +55,10 @@ def password(_cici_):
     return _dapunta_
 def cek_recode():
     try :
-        __dapunta__ = open('pass.txt','r').read()
+        __dapunta__ = open('__dapunta__.txt','r').read()
         if '__dapunta__cici__forever__' in __dapunta__ : return menu(__dapunta__)
         else : exit('\nMampus Error Mau Lu Recode Kan?')
-    except : exit('\nMampus Error Mau Lu Recode Kan?')
+    except Exception as cok: exit(cok)
 def tambah_pass():
     print('\n[•] Contoh : sayang,bismillah,123456,786786');cuy = input('[•] Masukkan Pass Tambahan Manual [1 Kata] : ');gh = open('pass.txt','w');gh.write(cuy);gh.close
 def tambah_pass_angka():
